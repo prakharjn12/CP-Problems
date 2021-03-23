@@ -1,1 +1,1 @@
-the problem statement can be found [here](https://codeforces.com/contest/1364/problem/D).  
+the problem statement can be found [here]<https://codeforces.com/contest/1364/problem/D>.  
