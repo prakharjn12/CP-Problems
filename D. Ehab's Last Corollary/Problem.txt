@@ -1,1 +1,1 @@
-[I'm an inline-style link](https://www.googl.com)
+This site was built using [GitHub Pages](https://pages.github.com/).
