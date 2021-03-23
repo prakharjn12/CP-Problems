@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 #define mod 1000000007
-#define pi 3.14159265358979
 #define  PRE(x,p) cout<<setprecision(x)<<p; 
 #define pb push_back
 #define mp make_pair
