@@ -1,0 +1,13 @@
+https://www.spoj.com/problems/DQUERY/ 
+
+
+
+ in this problem using brute force will give a time complexity of O(n*q)
+
+ so we need a better approach
+
+ The main trick behind the MO's algorithm is sorting the queries in chunks of sqrt(N) parts in increasing with respect to left bounds (ascending in right in case of ties)
+ 
+ Then the time complexity reduces to O( Q*sqrt(N) + N*sqrt(N) == O( (N+Q)*sqrt(N))  =O(1+2)
+ 
+ where first term refers to the total number of shifting of left pointer and second(2) term for right pointer
