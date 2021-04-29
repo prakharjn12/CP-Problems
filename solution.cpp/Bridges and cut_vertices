@@ -1,0 +1,131 @@
+#include<bits/stdc++.h>
+#define mod 1000000007
+#define pi 3.14159265358979
+#define PRE(x,p) cout<<setprecision(x)<<p; 
+#define pb push_back
+#define mp make_pair
+#define f first
+#define s second
+#define endl "\n"
+#define high INT_MAX
+// #define low INT_MIN
+#define ll long long int
+#define fast_io ios_base::sync_with_stdio(false);cin.tie(NULL)
+using namespace std;
+ll timer,tc;
+void showv(vector<ll>v)
+{
+	for(ll i=0;i<(ll)v.size();i++) cout<<v[i]<<' ';
+	cout<<endl;
+}
+void showa(ll a[],ll n)
+{
+	for(ll i=1;i<=n;i++) cout<<a[i]<<' ';
+	cout<<endl;
+}
+
+vector<ll>vec[100005];
+ll vis[100005],low[100005],disc[100005];
+set<ll>ap;
+vector<pair<ll,ll>>bridges;
+
+
+void dfs_bridges(ll u, ll p)
+{
+    vis[u]=1;
+    disc[u]=low[u]=timer;
+    timer++;
+    for(ll j=0;j<vec[u].size();j++)
+    {
+        ll v=vec[u][j];
+        
+        if(!vis[v])
+        {
+            dfs_bridges(v,u);
+            low[u]=min(low[u],low[v]);
+            if(low[v]>disc[u])
+            bridges.pb({u,v});
+            
+        }
+        else
+        if(v!=p)
+        low[u]=min(low[u],disc[v]);
+    }
+    
+    
+}
+void dfs_cutedges(ll u,ll p)
+{
+    vis[u]=1;
+    disc[u]=low[u]=timer;
+    timer++;
+    int child=0;
+    for(ll j=0;j<vec[u].size();j++)
+    {
+        ll v=vec[u][j];
+        
+        if(!vis[v])
+        {
+            child++;
+            dfs_cutedges(v,u);
+            low[u]=min(low[u],low[v]);
+            if(p==0 && child>1)
+            ap.insert(u);
+            else if(p!=0 && low[v]>=disc[u])
+            ap.insert(u);
+            
+        }
+        else
+        if(v!=p)
+        low[u]=min(low[u],disc[v]);
+    }
+}
+void solve()
+{
+   ll n,m,i,u,v;
+   cin>>n>>m;
+   for(i=0;i<m;i++)
+   {
+       cin>>u>>v;
+       u++;v++;
+       vec[u].pb(v);
+       vec[v].pb(u);
+   }
+   timer=1;
+  dfs_bridges(1,0);  //finding bridges 
+  memset(vis,0,sizeof(vis));
+  timer=1;
+  dfs_cutedges(1,0);
+  
+  cout<<ap.size()<<endl;
+  for(auto it:ap)
+  cout<<it-1<<' ';
+  cout<<endl;
+  cout<<bridges.size()<<endl;
+  sort(bridges.begin(),bridges.end());
+    for(i=0;i<bridges.size();i++)
+    {
+        cout<<bridges[i].f-1<<' '<<bridges[i].s-1<<endl;
+    }
+    
+    
+}
+
+int main()
+{
+
+  fast_io;
+//     #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+//     #endif 
+ll t=1;
+// cin>>t;
+for(tc=1;tc<=t;tc++)
+{
+ // cout<<"Case #"<<tc<<": ";
+ solve();
+}
+return 0;
+}
+
