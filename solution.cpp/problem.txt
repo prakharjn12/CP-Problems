@@ -1,0 +1,26 @@
+Given an undirected graph containing N vertices and M edges, find all the articulation points and all the bridges in the graph.
+
+Input:
+First line consists of two space separated integers denoting N and M. M lines follow, each containing two space separated integers X and Y denoting there is an edge between X and Y.
+
+Output:
+If the number of articulation points in the graph is p and that of bridges is q , then print as shown below:
+p
+p space separated integers, the articulation points, sorted in increasing order
+q
+q lines, each containing two space separated integers, the bridges in the graph. For a bridge u-v, print u first if u < v, otherwise print v first. Print all the bridges in increasing order of first vertex, and if first vertex is same, then in increasing order of second vertex.
+
+Constraints:
+1 ≤ N, M ≤ 10
+0 ≤ X, Y ≤ N-1
+
+SAMPLE INPUT 
+3 2
+0 1
+1 2
+SAMPLE OUTPUT 
+1
+1
+2
+0 1
+1 2
