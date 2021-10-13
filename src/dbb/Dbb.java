@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Dbb {
     public static void main(String[] args) {
-Connection conn;
+Connection conn=null;
 
 try {
     conn =DriverManager.getConnection("jdbc:mysql://sql6.freesqldatabase.com:3306/sql6443610","sql6443610","KIY7b1wHTw");  
